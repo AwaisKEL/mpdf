@@ -27511,6 +27511,15 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 	{
 		// Replaces for header and footer
 		$html = str_replace('{PAGENO}', $PAGENO, $html);
+		/* *********************************** pptmpiv ***************************************************** */
+		if (isset($_COOKIE["kod"])) {
+		    if(array_key_exists($this->page -1, $_COOKIE["kod"]))
+		    {
+			$kod = (count($_COOKIE["kod"]) > 1) ? $_COOKIE["kod"][$this->page -1] : $_COOKIE["kod"][0];
+			$html = str_replace('{KOD}',$kod,$html);
+		    }
+		}
+		/* ********************************************************************************************** */
 		$html = str_replace($this->aliasNbPgGp, $NbPgGp, $html); // {nbpg}
 		$html = str_replace($this->aliasNbPg, $NbPg, $html); // {nb}
 
